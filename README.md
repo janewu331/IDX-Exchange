@@ -48,15 +48,11 @@ Completed:
 
 Sold dataset:
 
-* Rows before concatenation: 640,544
-* Rows after concatenation: 640,544
 * Rows before Residential filter: 640,544
 * Rows after Residential filter: 430,725
 
 Listing dataset:
 
-* Rows before concatenation: 917,657
-* Rows after concatenation: 917,657
 * Rows before Residential filter: 917,657
 * Rows after Residential filter: 583,577
 
