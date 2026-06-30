@@ -63,7 +63,7 @@ Place the raw monthly CSV files in a local folder named `csv/`.
 Then run:
 
 ```bash
-python scripts/week1_monthly_dataset_aggregation.py
+python week1_monthly_dataset_aggregation.py
 ```
 
 The script creates an `output/` folder locally and saves:
