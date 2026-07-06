@@ -48,13 +48,13 @@ Completed:
 
 Sold dataset:
 
-* Rows before Residential filter: 640,544
-* Rows after Residential filter: 430,725
+* Rows before Residential filter: 639,877
+* Rows after Residential filter: 430,436
 
 Listing dataset:
 
-* Rows before Residential filter: 917,657
-* Rows after Residential filter: 583,577
+* Rows before Residential filter: 925,111
+* Rows after Residential filter: 588,699
 
 ## How to Run
 
