@@ -92,6 +92,21 @@ listing_combined = load_and_combine_files("CRMLSListing", months)
 sold_residential = filter_residential(sold_combined, "Sold dataset")
 listing_residential = filter_residential(listing_combined, "Listing dataset")
 
+# Save unfiltered combined CSV files
+sold_unfiltered_output_path = OUTPUT_DIR / "sold_unfiltered.csv"
+listing_unfiltered_output_path = OUTPUT_DIR / "listings_unfiltered.csv"
+
+sold_combined.to_csv(sold_unfiltered_output_path, index=False)
+listing_combined.to_csv(listing_unfiltered_output_path, index=False)
+
+# Save filtered Residential CSV files
+sold_filtered_output_path = OUTPUT_DIR / "sold.csv"
+listing_filtered_output_path = OUTPUT_DIR / "listings.csv"
+
+sold_residential.to_csv(sold_filtered_output_path, index=False)
+listing_residential.to_csv(listing_filtered_output_path, index=False)
+
+
 # Save final combined CSV files
 sold_output_path = OUTPUT_DIR / "sold.csv"
 listing_output_path = OUTPUT_DIR / "listings.csv"
@@ -100,5 +115,11 @@ sold_residential.to_csv(sold_output_path, index=False)
 listing_residential.to_csv(listing_output_path, index=False)
 
 print("\nFiles saved successfully:")
-print(sold_output_path)
-print(listing_output_path)
+
+print("\nUnfiltered combined files:")
+print(sold_unfiltered_output_path)
+print(listing_unfiltered_output_path)
+
+print("\nFiltered Residential files:")
+print(sold_filtered_output_path)
+print(listing_filtered_output_path)
