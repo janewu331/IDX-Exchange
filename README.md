@@ -31,11 +31,6 @@ Completed:
 
 ## Week 1 – Monthly Dataset Aggregation
 
-Individual monthly files are combined into unified datasets that span multiple months, enabling trend analysis over time.
-* Multi-file dataset management
-* Data aggregation with Pandas
-* Preparing time-series datasets for analysis
-
 Completed:
 
 * Loaded all monthly CRMLS sold and listing files from January 2024 through May 2026.
@@ -46,62 +41,70 @@ Completed:
   * `sold.csv`
   * `listings.csv`
 
-Deliverable: 
-* week1_monthly_dataset_aggregation.py script
-* Sold dateset row count:
-  * After concatenation: 639,877
-  * After Residential filter: 430,436
-* Listing dataset row count:
-  * After concatenation: 925,111
-  * After Residential filter: 588,699
+### Key Results
 
+Sold dataset row count:
+
+* After concatenation: 639,877
+* After Residential filter: 430,436
+
+Listings dataset row count:
+
+* After concatenation: 925,111
+* After Residential filter: 588,699
+
+  
 ## Week 2 – Dataset Structuring and Validation
-
-Inspected and filtered the dataset to ensure only relevant residential property records are used.
-* Dataset validation and quality checks
-* Exploratory data analysis (EDA)
-* MLS dataset structure and property type filtering
 
 Completed:
 
-* Reviewed unique property types in the unfiltered datasets.
+* Reviewed unique property types in the unfiltered sold and listings datasets.
 * Created property type share tables to compare Residential records against other property categories.
 * Created missing value tables for Residential-filtered datasets that report:
   * Column data types
-  * Column null-count
-  * Whether missing values >90% 
-* Created distribution summary table for key numeric fields.
+  * Column null counts
+  * Missing value percentages
+  * Whether each column has more than 90% missing values
+* Created distribution summary tables for key numeric fields.
 * Created histograms and boxplots for key numeric fields to review distributions and identify potential outliers.
 * Dropped columns with more than 90% missing values from the Residential-filtered datasets and saved as:
   * `sold_week2.csv`
   * `listings_week2.csv`
+ 
+### Key Results:
 
-Local report outputs:
+Property type:
+* 8 unique property types
+* Residential share: 67.3%
+* Other property type share: 32.7% 
 
-- Property type share reports
-- Missing value reports
-- Numeric summary reports
-- Dropped column reports
+Missing value summary:
 
-Local chart outputs:
+* Sold: 15 columns above 90% null
+* Listings: 13 columns above 90% null
 
-- Histograms for key numeric fields
-- Boxplots for key numeric fields
+Numeric distribution summary:
 
-Deliverable: 
-* week2_dataset_validation.py script
-* Missing value summary:
-  * Sold: 15 columns above 90% null
-  * Listing: 13 columns above 90% null
-* Numeric distribution summary:
-  * ClosePrice
-  * LivingArea
-  * DaysOnMarket
+* ClosePrice:
+  * min: 0.0
+  * max: 989500000.0
+  * mean: 1193108.0
+  * median: 825000.0
+* LivingArea:
+  * min: 0.0
+  * max: 17021321.0
+  * mean: 1904.1
+  * median: 1644.0
+* DaysOnMarket:
+  * min: -288.0
+  * max: 12430.0
+  * mean: 37.3
+  * median: 18.0
 
-Intern questions:
-* What is the Residential vs. other property type share?
-* What are the median and average close prices?
-* What does the Days on Market distribution look like?
+EDA Findings:
+* The DaysOnMarket distribution is strongly right-skewed. Most sold residential properties have relatively low DaysOnMarket values. The minimum value is -288 and the maximum value is 12,430, which suggests invalid records or extreme outliers that should be flagged or cleaned. The histogram and boxplot also show extreme outliers
+
+Future Analysis:
 * What percentage of homes sold above vs. below list price?
 * Are there any apparent date consistency issues (e.g., close date before listing date)?
 * Which counties have the highest median prices?
@@ -141,4 +144,4 @@ The Week 2 script creates local reports/ and charts/ folders and saves:
 
 ## Repository Notes
 
-This repository is updated weekly throughout the internship. It includes Python scripts, documentation, and project notes, but excludes raw MLS data and generated CSV files.
+This repository is updated weekly throughout the internship. It includes Python scripts, documentation, and project notes, but excludes raw MLS data, and generated CSV files/reports/charts.
