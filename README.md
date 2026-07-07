@@ -56,6 +56,43 @@ Listing dataset:
 * Rows before Residential filter: 925,111
 * Rows after Residential filter: 588,699
 
+## Week 2 – Dataset Structuring and Validation
+
+Completed:
+
+- Inspected dataset structure for both sold and listing datasets, including:
+  - Number of rows
+  - Number of columns
+  - Column data types
+
+- Reviewed unique property types in the unfiltered sold and listing datasets.
+
+- Created property type share reports to compare Residential records against other property categories.
+
+- Created missing value reports for sold and listing datasets, flagging columns with more than 90% missing values.
+
+- Generated numeric summary reports for key numeric fields.
+
+- Created histograms and boxplots for key numeric fields to review distributions and identify potential outliers.
+
+- Dropped columns with more than 90% missing values from the Residential-filtered datasets.
+
+- Saved Week 2 filtered datasets locally as:
+  - `sold_week2.csv`
+  - `listings_week2.csv`
+
+Week 2 local report outputs:
+
+- Property type share reports
+- Missing value reports
+- Dropped column reports
+- Numeric summary reports
+
+Week 2 local chart outputs:
+
+- Histograms for key numeric fields
+- Boxplots for key numeric fields
+
 ## How to Run
 
 Place the raw monthly CSV files in a local folder named `csv/`.
@@ -66,10 +103,28 @@ Then run:
 python week1_monthly_dataset_aggregation.py
 ```
 
-The script creates an `output/` folder locally and saves:
+The Week 1 script creates an output/ folder locally and saves:
 
-* `sold.csv`
-* `listings.csv`
+sold_unfiltered.csv
+listings_unfiltered.csv
+sold.csv
+listings.csv
+
+Then run the Week 2 validation script:
+
+```bash
+python week2_dataset_validation.py
+```
+
+The Week 2 script creates local reports/ and charts/ folders and saves:
+
+- output/sold_week2.csv
+- output/listings_week2.csv
+- missing value reports
+- property type share reports
+- dropped column reports
+- numeric summary reports
+- numeric distribution charts
 
 ## Repository Notes
 
