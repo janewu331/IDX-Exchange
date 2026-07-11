@@ -21,7 +21,7 @@ File naming format:
 
 ## Week 0 – MLS Data Pipeline
 
-Completed:
+### Completed:
 
 * Reviewed the MLS data pipeline process.
 * Connected to the FTP server using FileZilla.
@@ -31,7 +31,7 @@ Completed:
 
 ## Week 1 – Monthly Dataset Aggregation
 
-Completed:
+### Completed:
 
 * Loaded all monthly CRMLS sold and listing files from January 2024 through May 2026.
 * Concatenated monthly files into two combined datasets and saved as:
@@ -56,11 +56,11 @@ Listings dataset row count:
   
 ## Week 2 – Dataset Structuring and Validation
 
-Completed:
+### Completed:
 
 * Reviewed unique property types in the unfiltered sold and listings datasets.
 * Created property type share tables to compare Residential records against other property categories.
-* Created missing value tables for Residential-filtered datasets that report:
+* Created tables for Residential-filtered datasets that report:
   * Column data types
   * Column null counts
   * Missing value percentages
@@ -73,41 +73,46 @@ Completed:
  
 ### Key Results:
 
-Property type:
-* 8 unique property types
-* Residential share: 67.3%
-* Other property type share: 32.7% 
+#### Sold Dataset Property Type Share:
 
-Missing value summary:
+| Property Type | Percent |
+|---|---:|
+| Residential | 67.25% |
+| ResidentialLease | 22.90% |
+| Land | 3.24% |
+| ManufacturedInPark | 2.71% |
+| ResidentialIncome | 2.68% |
+| CommercialSale | 0.62% |
+| CommercialLease | 0.52% |
+| BusinessOpportunity | 0.07% |
+
+Residential properties make up 67.25% of the sold dataset. The datasets were filtered to keep only records where `PropertyType == "Residential"`.
+
+#### Missing value summary:
 
 * Sold: 15 columns above 90% null
 * Listings: 13 columns above 90% null
 
-Numeric distribution summary:
+These high missing columns were dropped from the datasets.
 
-* ClosePrice:
-  * min: 0.0
-  * max: 989500000.0
-  * mean: 1193108.0
-  * median: 825000.0
-* LivingArea:
-  * min: 0.0
-  * max: 17021321.0
-  * mean: 1904.1
-  * median: 1644.0
-* DaysOnMarket:
-  * min: -288.0
-  * max: 12430.0
-  * mean: 37.3
-  * median: 18.0
+#### Numeric Distribution Summary
 
-EDA Findings:
-* The DaysOnMarket distribution is strongly right-skewed. Most sold residential properties have relatively low DaysOnMarket values. The minimum value is -288 and the maximum value is 12,430, which suggests invalid records or extreme outliers that should be flagged or cleaned. The histogram and boxplot also show extreme outliers
+| Field | Min | Max | Mean | Median |
+|---|---:|---:|---:|---:|
+| ClosePrice | 0 | 989,500,000 | 1,193,108 | 825,000 |
+| LivingArea | 0 | 17,021,321 | 1,904.1 | 1,644 |
+| DaysOnMarket | -288 | 12,430 | 37.3 | 18 |
 
-Future Analysis:
-* What percentage of homes sold above vs. below list price?
-* Are there any apparent date consistency issues (e.g., close date before listing date)?
-* Which counties have the highest median prices?
+Some fields contain invalid or extreme values, such as ClosePrice = 0, LivingArea = 0, and negative DaysOnMarket. These records will be flagged or cleaned in later data preparation steps.
+
+#### EDA Findings:
+* Residential share: 67.3%, other property type share: 32.7%
+* Median close price: $825,000, average close price: $1,193,108
+* The DaysOnMarket distribution is strongly right-skewed. Most sold residential properties have relatively low DaysOnMarket values. The minimum value is -288, the median is 18, while the maximum value is 12,430, which suggests invalid records or extreme outliers that should be flagged or cleaned. The histogram and boxplot also show extreme outliers.
+* Homes sold above list price: 40.10%, sold below list price: 42.54%, sold at list price: 17.36%
+* CloseDate before ListingContractDate: 64 rows (0.01%)
+* Counties with the highest median prices: San Mateo, Santa Clara, San Francisco, Santa Cruz, Orange
+
 
 ## How to Run
 
