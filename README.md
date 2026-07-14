@@ -113,12 +113,41 @@ Some fields contain invalid or extreme values, such as ClosePrice = 0, LivingAre
 * CloseDate before ListingContractDate: 64 rows (0.01%)
 * Counties with the highest median prices: San Mateo, Santa Clara, San Francisco, Santa Cruz, Orange
 
+## Week 3 – Mortgage Rate Enrichment
+
+### Completed:
+
+- Fetched the `MORTGAGE30US` series directly from the St. Louis Federal Reserve FRED CSV endpoint.
+- Converted the weekly mortgage rate data into monthly averages.
+- Merged the monthly mortgage rate onto both datasets using a year_month key.
+- Validated the merge by checking that no rows had missing mortgage rate values after the merge.
+- Saved the enriched outputs back to:
+  - `output/sold.csv`
+  - `output/listings.csv`
+
+### Validation Results
+
+After merging the mortgage rate data:
+```text
+Sold rows with missing mortgage rate: 0
+Listings rows with missing mortgage rate: 0
+```
+
+Example preview from the sold dataset:
+```text
+    CloseDate year_month  ClosePrice  rate_30yr_fixed
+0  2024-01-26    2024-01    240000.0           6.6425
+1  2024-01-05    2024-01    815000.0           6.6425
+2  2024-01-05    2024-01    810000.0           6.6425
+3  2024-01-30    2024-01    858000.0           6.6425
+4  2024-01-29    2024-01   1890500.0           6.6425
+```
 
 ## How to Run
 
 Place the raw monthly CSV files in a local folder named `csv/`.
 
-Then run:
+Then run the Week 1 script:
 
 ```bash
 python week1_monthly_dataset_aggregation.py
@@ -126,12 +155,12 @@ python week1_monthly_dataset_aggregation.py
 
 The Week 1 script creates an output/ folder locally and saves:
 
-sold_unfiltered.csv
-listings_unfiltered.csv
-sold.csv
-listings.csv
+- sold_unfiltered.csv
+- listings_unfiltered.csv
+- sold.csv
+- listings.csv
 
-Then run the Week 2 validation script:
+Then run the Week 2 script:
 
 ```bash
 python week2_dataset_validation.py
@@ -139,13 +168,26 @@ python week2_dataset_validation.py
 
 The Week 2 script creates local reports/ and charts/ folders and saves:
 
-- output/sold_week2.csv
-- output/listings_week2.csv
 - property type share reports
 - missing value reports
 - numeric summary reports
 - numeric distribution charts
 - dropped column reports
+
+The Week 2 script also updates:
+
+- output/sold.csv
+- output/listings.csv
+
+Then run the Week 3 script:
+
+```bash
+python week3_mortgage_rate_enrichment.py
+```
+
+The Week 3 script updates:
+- output/sold.csv
+- output/listings.csv
 
 ## Repository Notes
 
