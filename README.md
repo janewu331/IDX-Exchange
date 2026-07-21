@@ -164,6 +164,8 @@ Example preview from the sold dataset:
 | Purchase contract before listing | 280 | 293 |
 | Any invalid timeline | 520 | 557 |
 
+Some records violate more than one timeline rule, so the individual flag counts may add up to more than the overall invalid timeline count.
+
 #### Invalid Numeric Value Counts
 
 | Flag | Sold | Listings |
@@ -175,7 +177,6 @@ Example preview from the sold dataset:
 | Negative bathrooms | 0 | 0 |
 | Any invalid numeric value | 203 | 416 |
 
-Some records violate more than one timeline rule, so the individual flag counts may add up to more than the overall invalid timeline count.
 
 ### Week 5
 - Remove unnecessary or redundant columns
