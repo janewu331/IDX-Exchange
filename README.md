@@ -95,7 +95,7 @@ Residential properties make up 67.25% of the sold dataset. The datasets were fil
 
 These high missing columns were dropped from the datasets.
 
-#### Numeric Distribution Summary
+#### Sold Dataset Numeric Distribution Summary
 
 | Field | Min | Max | Mean | Median |
 |---|---:|---:|---:|---:|
@@ -105,7 +105,7 @@ These high missing columns were dropped from the datasets.
 
 Some fields contain invalid or extreme values, such as ClosePrice = 0, LivingArea = 0, and negative DaysOnMarket. These records will be flagged or cleaned in later data preparation steps.
 
-#### EDA Findings:
+#### EDA Findings for Sold Dataset:
 * Residential share: 67.3%, other property type share: 32.7%
 * Median close price: $825,000, average close price: $1,193,108
 * The DaysOnMarket distribution is strongly right-skewed. Most sold residential properties have relatively low DaysOnMarket values. The minimum value is -288, the median is 18, while the maximum value is 12,430, which suggests invalid records or extreme outliers that should be flagged or cleaned. The histogram and boxplot also show extreme outliers.
@@ -128,10 +128,8 @@ Some fields contain invalid or extreme values, such as ClosePrice = 0, LivingAre
 ### Validation Results
 
 After merging the mortgage rate data:
-```text
-Sold rows with missing mortgage rate: 0
-Listings rows with missing mortgage rate: 0
-```
+- Sold rows with missing mortgage rate: 0
+- Listings rows with missing mortgage rate: 0
 
 Example preview from the sold dataset:
 ```text
