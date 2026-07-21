@@ -67,9 +67,9 @@ Listings dataset row count:
   * Whether each column has more than 90% missing values
 * Created distribution summary tables for key numeric fields.
 * Created histograms and boxplots for key numeric fields to review distributions and identify potential outliers.
-* Dropped columns with more than 90% missing values from the Residential-filtered datasets and saved as:
-  * `sold_week2.csv`
-  * `listings_week2.csv`
+* Dropped columns with more than 90% missing values from the Residential-filtered datasets and updated:
+  * `output/sold.csv`
+  * `output/listings.csv`
  
 ### Key Results:
 
@@ -142,6 +142,46 @@ Example preview from the sold dataset:
 3  2024-01-30    2024-01    858000.0           6.6425
 4  2024-01-29    2024-01   1890500.0           6.6425
 ```
+
+## Week 4 – Data Cleaning and Preparation
+
+### Completed:
+- Converted date fields to datetime format.
+- Validated the logical order of date fields and flagged invalid records.
+- Ensured numeric fields are properly typed and flagged invalid records.
+- Updated the files:
+  - `output/sold.csv`
+  - `output/listings.csv`
+
+### Key Results
+
+#### Date Consistency Flag Counts
+
+| Flag | Sold | Listings |
+|---|---:|---:|
+| Listing after close | 64 | 79 |
+| Purchase contract after close | 240 | 265 |
+| Purchase contract before listing | 280 | 293 |
+| Any invalid timeline | 520 | 557 |
+
+#### Invalid Numeric Value Counts
+
+| Flag | Sold | Listings |
+|---|---:|---:|
+| ClosePrice <= 0 | 1 | 0 |
+| LivingArea <= 0 | 153 | 388 |
+| DaysOnMarket < 0 | 49 | 28 |
+| Negative bedrooms | 0 | 0 |
+| Negative bathrooms | 0 | 0 |
+| Any invalid numeric value | 203 | 416 |
+
+Some records violate more than one timeline rule, so the individual flag counts may add up to more than the overall invalid timeline count.
+
+### Week 5
+- Remove unnecessary or redundant columns
+- Handle missing values
+- Geographic data checks
+
 
 ## How to Run
 
